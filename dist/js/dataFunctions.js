@@ -1,3 +1,5 @@
+const WEATHER_API_KEY = "40166c448ab2491f50cb3904e815a0c9";
+
 export const setLocationObject = (locationObj, coordsObj) => {
     const { lat, lon, name, unit } = coordsObj;
     locationObj.setLat(lat);
@@ -13,17 +15,18 @@ export const setLocationObject = (locationObj, coordsObj) => {
   };
   
   export const getWeatherFromCoords = async (locationObj) => {
-    /* const lat = locationObj.getLat();
-    const lon = locationObj.getLon();
-    const units = locationObj.getUnit();
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=${units}&appid=${WEATHER_API_KEY}`;
-    try {
-      const weatherStream = await fetch(url);
-      const weatherJson = await weatherStream.json();
-      return weatherJson;
-    } catch (err) {
-      console.error(err);
-    } */
+    //  const lat = locationObj.getLat();
+    // const lon = locationObj.getLon();
+    // const units = locationObj.getUnit();
+    // const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&units=${units}&appid=${WEATHER_API_KEY}`;
+    // try {
+    //   const weatherStream = await fetch(url);
+    //   const weatherJson = await weatherStream.json();
+    //   return weatherJson;
+    // } catch (err) {
+    //   console.error(err);
+    //   return null;
+    // } 
   
     const urlDataObj = {
       lat: locationObj.getLat(),
@@ -39,21 +42,23 @@ export const setLocationObject = (locationObj, coordsObj) => {
       return weatherJson;
     } catch (err) {
       console.error(err);
+      return null;
     }
   };
   
   export const getCoordsFromApi = async (entryText, units) => {
-    /* const regex = /^\d+$/g;
+    const regex = /^\d+$/g;
     const flag = regex.test(entryText) ? "zip" : "q";
     const url = `https://api.openweathermap.org/data/2.5/weather?${flag}=${entryText}&units=${units}&appid=${WEATHER_API_KEY}`;
     const encodedUrl = encodeURI(url);
     try {
       const dataStream = await fetch(encodedUrl);
       const jsonData = await dataStream.json();
+      console.log(jsonData);
       return jsonData;
     } catch (err) {
       console.error(err.stack);
-    } */
+    } 
   
     const urlDataObj = {
       text: entryText,

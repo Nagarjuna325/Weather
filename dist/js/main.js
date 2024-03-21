@@ -133,6 +133,7 @@ import {
     const coordsData = await getCoordsFromApi(entryText, currentLoc.getUnit());
     if (coordsData) {
       if (coordsData.cod === 200) {
+        // work with api data
         const myCoordsObj = {
           lat: coordsData.coord.lat,
           lon: coordsData.coord.lon,
@@ -152,5 +153,6 @@ import {
   
   const updateDataAndDisplay = async (locationObj) => {
     const weatherJson = await getWeatherFromCoords(locationObj);
+    // console.log(weatherJson);
     if (weatherJson) updateDisplay(weatherJson, locationObj);
   };
