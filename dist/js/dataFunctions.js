@@ -41,7 +41,7 @@ export const setLocationObject = (locationObj, coordsObj) => {
       return weatherJson;
     } catch (err) {
       console.error(err);
-      // return null;
+      return null;
     }
   };
   
@@ -72,6 +72,7 @@ export const setLocationObject = (locationObj, coordsObj) => {
       return jsonData;
     } catch (err) {
       console.error(err);
+      return null;
     }
   };
   
